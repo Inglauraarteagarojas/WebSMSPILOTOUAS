@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación de Riesgo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .header label {
+      margin-right: 10px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h3 {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-left: 5px solid #007BFF;
+      margin: 0 -20px;
+      padding-left: 25px;
+    }
+    .risk-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .risk-item label {
+      flex: 1;
+    }
+    .risk-item select {
+      width: 60px;
+    }
+    .totals {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e6e6e6;
+      border: 1px solid #ccc;
+    }
+    .scale {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .scale-bar {
+      position: relative;
+      display: flex;
+      height: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .low-risk {
+      background-color: #00ff00;
+      flex: 1;
+    }
+    .caution {
+      background-color: #ffff00;
+      flex: 1;
+    }
+    .concern {
+      background-color: #ffa500;
+      flex: 1;
+    }
+    .danger {
+      background-color: #ff0000;
+      flex: 1;
+    }
+    .indicator {
+      position: absolute;
+      top: -10px;
+      height: 50px;
+      width: 2px;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Evaluación de Riesgo</h2>
+    <div class="header">
+      <div>
+        <label>Nombre del Piloto:</label>
+        <input type="text" id="pilot-name" placeholder="Ingrese nombre">
+      </div>
+      <div>
+        <label>Vuelo Desde:</label>
+        <input type="text" id="flight-from" placeholder="Desde">
+        <label>Hasta:</label>
+        <input type="text" id="flight-to" placeholder="Hasta">
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Sueño</h3>
+      <div class="risk-item">
+        <label>1. No durmió bien o menos de 8 horas</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. Durmió bien</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>¿Cómo se Siente?</h3>
+      <div class="risk-item">
+        <label>1. Tiene un resfriado o está enfermo</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. Se siente genial</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>3. Se siente un poco mal</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>¿Cómo Va el Día?</h3>
+      <div class="risk-item">
+        <label>1. Parece que una cosa tras otra (tarde, cometiendo errores, fuera de paso)</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. Día grandioso</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Clima al Finalizar</h3>
+      <div class="risk-item">
+        <label>1. Más de 5 millas de visibilidad y techos de 3,000 pies</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. Al menos 3 millas de visibilidad y techos de 1,000 pies</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>3. Condiciones IMC</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>¿Es el Vuelo?</h3>
+      <div class="risk-item">
+        <label>1. ¿De Día?</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. ¿De Noche?</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Planificación</h3>
+      <div class="risk-item">
+        <label>1. Prisa por despegar</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>2. Sin prisa</label>
+        <select class="risk-value">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>3. Utilizó cartas y computadora para ayudar</label>
+        <select class="risk-value">
+            <option value="0">0</option>
+            <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>4. Utilizó programa de computadora para toda la planificación</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>5. ¿Verificó peso y balance?</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>6. ¿Evaluó el rendimiento?</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="risk-item">
+        <label>7. ¿Informa a los pasajeros en tierra y durante el vuelo?</label>
+        <select class="risk-value">
+          <option value="0">0</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="totals">
+      <div>
+        Total Columna Izquierda: <span id="left-total">0</span>
+      </div>
+      <div>
+        Total Columna Derecha: <span id="right-total">0</span>
+      </div>
+      <div>
+        Puntuación Total: <span id="total-score">0</span>
+      </div>
+    </div>
+
+    <div class="scale">
+      <h3>Escala de Riesgo</h3>
+      <div class="scale-bar">
+        <div class="low-risk"></div>
+        <div class="caution"></div>
+        <div class="concern"></div>
+        <div class="danger"></div>
+        <div id="indicator" class="indicator" style="left: 0%;"></div>
+      </div>
+      <div>
+        <span>0: Riesgo Bajo</span> | <span>10: Precaución</span> | <span>20: Preocupación</span> | <span>30+: Peligro</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const riskValues = document.querySelectorAll('.risk-value');
+    const leftTotal = document.getElementById('left-total');
+    const rightTotal = document.getElementById('right-total');
+    const totalScore = document.getElementById('total-score');
+    const indicator = document.getElementById('indicator');
+
+    riskValues.forEach(select => {
+      select.addEventListener('change', calculateTotals);
+    });
+
+    function calculateTotals() {
+      let left = 0;
+      let right = 0;
+
+      riskValues.forEach((select, index) => {
+        const value = parseInt(select.value);
+        if (index < 8) {
+          left += value;
+        } else {
+          right += value;
+        }
+      });
+
+      leftTotal.textContent = left;
+      rightTotal.textContent = right;
+      const total = left + right;
+      totalScore.textContent = total;
+
+      // Adjust indicator position based on risk levels
+      let percentage;
+      if (total < 10) {
+        percentage = (total / 10) * 25; // Low Risk section
+      } else if (total < 20) {
+        percentage = 25 + ((total - 10) / 10) * 25; // Caution section
+      } else if (total < 30) {
+        percentage = 50 + ((total - 20) / 10) * 25; // Concern section
+      } else {
+        percentage = 75 + Math.min(((total - 30) / 10) * 25, 25); // Danger section
+      }
+
+      indicator.style.left = `${Math.min(percentage, 100)}%`;
+    }
+  </script>
+</body>
+</html>
